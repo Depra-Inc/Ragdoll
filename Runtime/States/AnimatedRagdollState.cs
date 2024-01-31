@@ -12,8 +12,6 @@ namespace Depra.Ragdoll.Body.States
 	{
 		[SerializeField] private Animator _animator;
 
-		public override void Initialize(RagdollBody body) { }
-
 		[ContextMenu(nameof(Enter))]
 		public override void Enter() => _animator.enabled = true;
 

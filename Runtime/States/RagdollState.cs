@@ -11,8 +11,6 @@ namespace Depra.Ragdoll.Body.States
 		// ReSharper disable once Unity.RedundantEventFunction
 		protected virtual void Start() { }
 
-		public abstract void Initialize(RagdollBody body);
-
 		public abstract void Enter();
 
 		public abstract void Exit();

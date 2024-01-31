@@ -57,7 +57,6 @@ namespace Depra.Ragdoll.Body
 					continue;
 				}
 
-				state.Initialize(this);
 				_stateMachine.SwitchState(state);
 				_statesMap.Add(state.GetType(), state);
 			}

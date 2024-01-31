@@ -15,15 +15,21 @@ namespace Depra.Ragdoll.Body.States
 
 		private RagdollArmature _bakedArmature;
 
-		public override void Initialize(RagdollBody body) => _bakedArmature = _armature.Bake();
+		private RagdollArmature BakedArmature => _bakedArmature ??= _armature.Bake();
 
 		[ContextMenu(nameof(Enter))]
 		public override void Enter()
 		{
-			foreach (var bone in _bakedArmature.Bones)
+			foreach (var bone in BakedArmature.Bones)
 			{
+				if (bone.Joint)
+				{
+					bone.Joint.enableCollision = true;
+				}
+
 				bone.Rigidbody.useGravity = true;
 				bone.Rigidbody.isKinematic = false;
+				bone.Rigidbody.detectCollisions = true;
 				bone.Rigidbody.velocity = Vector3.zero;
 			}
 		}
@@ -31,10 +37,16 @@ namespace Depra.Ragdoll.Body.States
 		[ContextMenu(nameof(Exit))]
 		public override void Exit()
 		{
-			foreach (var bone in _bakedArmature.Bones)
+			foreach (var bone in BakedArmature.Bones)
 			{
+				if (bone.Joint)
+				{
+					bone.Joint.enableCollision = false;
+				}
+
 				bone.Rigidbody.useGravity = false;
 				bone.Rigidbody.isKinematic = true;
+				bone.Rigidbody.detectCollisions = false;
 			}
 		}
 	}

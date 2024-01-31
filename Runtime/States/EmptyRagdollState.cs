@@ -8,8 +8,6 @@ namespace Depra.Ragdoll.Body.States
 	[AddComponentMenu(menuName: MENU_PATH + nameof(EmptyRagdollState), DEFAULT_ORDER)]
 	public sealed class EmptyRagdollState : RagdollState, IState
 	{
-		public override void Initialize(RagdollBody body) { }
-
 		[ContextMenu(nameof(Enter))]
 		public override void Enter() { }
 

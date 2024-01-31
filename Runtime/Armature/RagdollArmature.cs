@@ -24,7 +24,7 @@ namespace Depra.Ragdoll.Armature
 			foreach (var bone in Bones)
 			{
 				var mass = bone.Rigidbody.mass;
-				centerOfMass += bone.Position * mass;
+				centerOfMass += bone.transform.position * mass;
 				sum += mass;
 			}
 
