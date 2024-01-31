@@ -3,9 +3,12 @@
 
 using Depra.Ragdoll.Armature;
 using UnityEngine;
+using static Depra.Ragdoll.Module;
 
 namespace Depra.Ragdoll.Body.States
 {
+	[DisallowMultipleComponent]
+	[AddComponentMenu(menuName: MENU_PATH + nameof(ActiveRagdollState), DEFAULT_ORDER)]
 	public sealed class ActiveRagdollState : RagdollState
 	{
 		[SerializeField] private RagdollArmatureBaker _armature;
@@ -21,6 +24,7 @@ namespace Depra.Ragdoll.Body.States
 			{
 				bone.Rigidbody.useGravity = true;
 				bone.Rigidbody.isKinematic = false;
+				bone.Rigidbody.velocity = Vector3.zero;
 			}
 		}
 
@@ -31,6 +35,7 @@ namespace Depra.Ragdoll.Body.States
 			{
 				bone.Rigidbody.useGravity = false;
 				bone.Rigidbody.isKinematic = true;
+				bone.Rigidbody.velocity = Vector3.zero;
 			}
 		}
 	}

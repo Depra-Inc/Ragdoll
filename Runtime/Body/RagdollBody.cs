@@ -33,12 +33,6 @@ namespace Depra.Ragdoll.Body
 			remove => _stateMachine.StateChanged -= value;
 		}
 
-		private void Start() => Initialize();
-
-		private void OnValidate() => _defaultState ??= TryGetComponent<EmptyRagdollState>(out var emptyState)
-			? emptyState
-			: gameObject.AddComponent<EmptyRagdollState>();
-
 		IState IStateMachine<IState>.CurrentState => _stateMachine.CurrentState;
 
 		public void SwitchState<TState>() where TState : RagdollState
