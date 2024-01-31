@@ -35,7 +35,6 @@ namespace Depra.Ragdoll.Body.States
 			{
 				bone.Rigidbody.useGravity = false;
 				bone.Rigidbody.isKinematic = true;
-				bone.Rigidbody.velocity = Vector3.zero;
 			}
 		}
 	}
