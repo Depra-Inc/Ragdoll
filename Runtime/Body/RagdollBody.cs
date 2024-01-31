@@ -1,7 +1,11 @@
-﻿using Depra.Ragdoll.Armature;
+﻿// SPDX-License-Identifier: Apache-2.0
+// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+
+using Depra.Ragdoll.Armature;
 using Depra.Stateful.Abstract;
 using Depra.Stateful.Finite;
 using UnityEngine;
+using static Depra.Ragdoll.Module;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,6 +13,7 @@ using UnityEditor;
 namespace Depra.Ragdoll.Body
 {
 	[DisallowMultipleComponent]
+	[AddComponentMenu(menuName: MENU_PATH + nameof(RagdollBody), DEFAULT_ORDER)]
 	public sealed class RagdollBody : MonoBehaviour
 	{
 		[SerializeField] private RagdollArmatureBaker _armature;

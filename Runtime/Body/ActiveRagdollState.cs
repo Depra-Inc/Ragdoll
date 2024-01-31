@@ -1,4 +1,7 @@
-﻿using Depra.Ragdoll.Armature;
+﻿// SPDX-License-Identifier: Apache-2.0
+// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+
+using Depra.Ragdoll.Armature;
 using Depra.Stateful.Abstract;
 
 namespace Depra.Ragdoll.Body

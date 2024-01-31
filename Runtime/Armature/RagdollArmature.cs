@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// SPDX-License-Identifier: Apache-2.0
+// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+
+using System.Collections.Generic;
 using Depra.Ragdoll.Bones;
 using UnityEngine;
 

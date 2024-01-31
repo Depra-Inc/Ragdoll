@@ -1,8 +1,13 @@
+// SPDX-License-Identifier: Apache-2.0
+// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+
 using UnityEngine;
+using static Depra.Ragdoll.Module;
 
 namespace Depra.Ragdoll.Bones
 {
 	[DisallowMultipleComponent]
+	[AddComponentMenu(menuName: MENU_PATH + nameof(RagdollBone), DEFAULT_ORDER)]
 	public sealed class RagdollBone : MonoBehaviour
 	{
 		[SerializeField] private BoneType _boneType;

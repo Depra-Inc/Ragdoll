@@ -1,6 +1,10 @@
-﻿using Depra.Ragdoll.Body;
+﻿// SPDX-License-Identifier: Apache-2.0
+// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+
+using Depra.Ragdoll.Body;
 using Depra.Ragdoll.Bones;
 using UnityEngine;
+using static Depra.Ragdoll.Module;
 #if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,6 +14,7 @@ namespace Depra.Ragdoll.Armature
 {
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(RagdollBody))]
+	[AddComponentMenu(menuName: MENU_PATH + nameof(DebugRagdollArmatureBaker), DEFAULT_ORDER)]
 	internal sealed class DebugRagdollArmatureBaker : RagdollArmatureBaker
 	{
 #if UNITY_EDITOR
