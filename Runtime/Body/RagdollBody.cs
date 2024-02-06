@@ -19,8 +19,6 @@ namespace Depra.Ragdoll.Body
 
 		public bool IsEnabled { get; private set; }
 
-		private void Reset() => GatherParts();
-
 		[ContextMenu(nameof(Enable))]
 		public void Enable()
 		{
@@ -68,18 +66,6 @@ namespace Depra.Ragdoll.Body
 			foreach (var part in _parts)
 			{
 				part.Disable();
-			}
-		}
-
-		[ContextMenu(nameof(GatherParts))]
-		private void GatherParts()
-		{
-			foreach (var part in GetComponentsInChildren<RagdollPart>())
-			{
-				if (_parts.Contains(part) == false)
-				{
-					_parts.Add(part);
-				}
 			}
 		}
 	}

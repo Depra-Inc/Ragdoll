@@ -5,11 +5,11 @@ using JetBrains.Annotations;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Bones
+namespace Depra.Ragdoll.Parts
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(menuName: MENU_PATH + nameof(RagdollBone), DEFAULT_ORDER)]
-	public sealed class RagdollBone : MonoBehaviour
+	public sealed class RagdollBone : RagdollPart
 	{
 		[SerializeField] private Joint _joint;
 		[SerializeField] private Collider _collider;
@@ -26,7 +26,7 @@ namespace Depra.Ragdoll.Bones
 			_rigidbody ??= GetComponent<Rigidbody>();
 		}
 
-		public void Enable()
+		public override void Enable()
 		{
 			if (_joint)
 			{
@@ -40,7 +40,7 @@ namespace Depra.Ragdoll.Bones
 			_rigidbody.velocity = Vector3.zero;
 		}
 
-		public void Disable()
+		public override void Disable()
 		{
 			if (_joint)
 			{

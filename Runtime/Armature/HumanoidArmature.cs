@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Depra.Ragdoll.Bones;
+using Depra.Ragdoll.Parts;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 

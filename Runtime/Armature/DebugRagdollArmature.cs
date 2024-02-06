@@ -2,7 +2,7 @@
 // © 2024 Nikolay Melnikov <n.melnikov@depra.org>
 
 using System.Collections.Generic;
-using Depra.Ragdoll.Bones;
+using Depra.Ragdoll.Parts;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
@@ -15,6 +15,7 @@ namespace Depra.Ragdoll.Armature
 		[SerializeField] private RagdollBone[] _bones;
 
 		[ContextMenu(nameof(GatherBones))]
-		public override IEnumerable<RagdollBone> GatherBones() => _bones ??= GetComponentsInChildren<RagdollBone>();
+		public override IEnumerable<RagdollBone> GatherBones() =>
+			_bones ??= GetComponentsInChildren<RagdollBone>();
 	}
 }
