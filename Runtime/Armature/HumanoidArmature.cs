@@ -10,8 +10,8 @@ using static Depra.Ragdoll.Module;
 namespace Depra.Ragdoll.Armature
 {
 	[DisallowMultipleComponent]
-	[AddComponentMenu(menuName: MENU_PATH + nameof(HumanoidArmatureBaker), DEFAULT_ORDER)]
-	public sealed class HumanoidArmatureBaker : RagdollArmatureBaker
+	[AddComponentMenu(menuName: MENU_PATH + nameof(HumanoidArmature), DEFAULT_ORDER)]
+	public sealed class HumanoidArmature : RagdollArmature
 	{
 		[SerializeField] private RagdollBone _hips;
 		[SerializeField] private RagdollBone[] _head;
@@ -19,7 +19,12 @@ namespace Depra.Ragdoll.Armature
 		[SerializeField] private RagdollBone[] _hands;
 		[SerializeField] private RagdollBone[] _legs;
 
-		public override RagdollArmature Bake()
+		private List<RagdollBone> _bones;
+
+		public override IEnumerable<RagdollBone> GatherBones() => _bones ??= Bake();
+
+		[ContextMenu(nameof(GatherBones))]
+		private List<RagdollBone> Bake()
 		{
 			var allBones = new List<RagdollBone>();
 			allBones.AddRange(_head.ToList());
@@ -27,9 +32,7 @@ namespace Depra.Ragdoll.Armature
 			allBones.AddRange(_bodies.ToList());
 			allBones.AddRange(_legs.ToList());
 
-			return new RagdollArmature(allBones);
+			return allBones;
 		}
-
-		public void Analyze() { }
 	}
 }

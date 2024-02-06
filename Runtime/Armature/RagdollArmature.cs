@@ -3,15 +3,32 @@
 
 using System.Collections.Generic;
 using Depra.Ragdoll.Bones;
+using Depra.Ragdoll.Parts;
 using UnityEngine;
 
 namespace Depra.Ragdoll.Armature
 {
-	public class RagdollArmature
+	public abstract class RagdollArmature : RagdollPart
 	{
-		public RagdollArmature(IEnumerable<RagdollBone> bones) => Bones = bones;
+		public abstract IEnumerable<RagdollBone> GatherBones();
 
-		public IEnumerable<RagdollBone> Bones { get; }
+		public override void Enable()
+		{
+			var bones = GatherBones();
+			foreach (var bone in bones)
+			{
+				bone.Enable();
+			}
+		}
+
+		public override void Disable()
+		{
+			var bones = GatherBones();
+			foreach (var bone in bones)
+			{
+				bone.Disable();
+			}
+		}
 
 		/// <summary>
 		/// Calculate center of mass of all the bones.
@@ -21,7 +38,8 @@ namespace Depra.Ragdoll.Armature
 			var centerOfMass = Vector3.zero;
 			var sum = 0f;
 
-			foreach (var bone in Bones)
+			var bones = GatherBones();
+			foreach (var bone in bones)
 			{
 				var mass = bone.Rigidbody.mass;
 				centerOfMass += bone.transform.position * mass;

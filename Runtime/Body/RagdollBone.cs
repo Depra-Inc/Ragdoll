@@ -25,5 +25,31 @@ namespace Depra.Ragdoll.Bones
 			_collider ??= GetComponent<Collider>();
 			_rigidbody ??= GetComponent<Rigidbody>();
 		}
+
+		public void Enable()
+		{
+			if (_joint)
+			{
+				_joint.enableCollision = true;
+			}
+
+			_collider.isTrigger = false;
+			_rigidbody.useGravity = true;
+			_rigidbody.isKinematic = false;
+			_rigidbody.detectCollisions = true;
+			_rigidbody.velocity = Vector3.zero;
+		}
+
+		public void Disable()
+		{
+			if (_joint)
+			{
+				_joint.enableCollision = false;
+			}
+
+			_rigidbody.useGravity = false;
+			_rigidbody.isKinematic = true;
+			_rigidbody.detectCollisions = false;
+		}
 	}
 }
