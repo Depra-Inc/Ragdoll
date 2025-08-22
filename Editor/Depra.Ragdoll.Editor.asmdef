@@ -1,11 +1,15 @@
 {
-    "name": "Depra.Ragdoll",
+    "name": "Depra.Ragdoll.Editor",
     "rootNamespace": "Depra.Ragdoll",
-    "references": [],
-    "includePlatforms": [],
+    "references": [
+        "GUID:26555fb8c148e584585b8b38d7d36e12"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
+    "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],

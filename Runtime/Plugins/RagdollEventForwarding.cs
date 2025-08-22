@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +7,7 @@ using static Depra.Ragdoll.Module;
 
 namespace Depra.Ragdoll.Parts
 {
-	[AddComponentMenu(MENU_PATH + nameof(RagdollEventForwarding), DEFAULT_ORDER)]
+	[AddComponentMenu(MENU_PATH + "Ragdoll Event Forwarding", DEFAULT_ORDER)]
 	internal sealed class RagdollEventForwarding : MonoBehaviour
 	{
 		[SerializeField] private RagdollPlugins _ragdoll;

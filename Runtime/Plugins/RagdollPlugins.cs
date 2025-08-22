@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System;
 using UnityEngine;
@@ -8,7 +8,7 @@ using static Depra.Ragdoll.Module;
 namespace Depra.Ragdoll.Parts
 {
 	[DisallowMultipleComponent]
-	[AddComponentMenu(MENU_PATH + nameof(RagdollPlugins), DEFAULT_ORDER)]
+	[AddComponentMenu(MENU_PATH + "Ragdoll Plugins", DEFAULT_ORDER)]
 	public sealed class RagdollPlugins : RagdollPart
 	{
 		public event Action Enabled;

@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System.Collections.Generic;
 using Depra.Ragdoll.Parts;
@@ -9,8 +9,8 @@ using static Depra.Ragdoll.Module;
 namespace Depra.Ragdoll.Armature
 {
 	[DisallowMultipleComponent]
-	[AddComponentMenu(MENU_PATH + nameof(DebugRagdollArmature), DEFAULT_ORDER)]
-	internal sealed class DebugRagdollArmature : RagdollArmature
+	[AddComponentMenu(MENU_PATH + "Generic Ragdoll Armature", DEFAULT_ORDER)]
+	internal sealed class GenericRagdollArmature : RagdollArmature
 	{
 		[SerializeField] private RagdollBone[] _bones;
 
