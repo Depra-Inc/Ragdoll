@@ -23,6 +23,8 @@ namespace Depra.Ragdoll
 			to.useGravity = _useGravity;
 		}
 
+		public void Apply(Collider to) => to.material = _material;
+
 		public void Capture(Rigidbody from)
 		{
 			_mass = from.mass;
@@ -30,5 +32,7 @@ namespace Depra.Ragdoll
 			_angularDrag = from.angularDrag;
 			_useGravity = from.useGravity;
 		}
+
+		public void Capture(Collider from) => _material = from.material;
 	}
 }

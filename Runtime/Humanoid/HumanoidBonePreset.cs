@@ -34,6 +34,11 @@ namespace Depra.Ragdoll.Armature
 				_physics.Apply(bone.Rigidbody);
 			}
 
+			if (bone.Collider)
+			{
+				_physics.Apply(bone.Collider);
+			}
+
 			if (bone.Joint)
 			{
 				_attachment.Apply(bone.Joint);
@@ -50,6 +55,11 @@ namespace Depra.Ragdoll.Armature
 			if (bone.Rigidbody)
 			{
 				_physics.Capture(bone.Rigidbody);
+			}
+
+			if (bone.Collider)
+			{
+				_physics.Capture(bone.Collider);
 			}
 
 			if (bone.Joint)
