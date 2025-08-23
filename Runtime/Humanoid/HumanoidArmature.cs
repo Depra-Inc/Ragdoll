@@ -22,6 +22,8 @@ namespace Depra.Ragdoll.Armature
 
 		[SerializeField] private HumanoidArmaturePreset _preset;
 
+		internal HumanoidArmaturePreset Preset => _preset;
+
 		public override IEnumerable<RagdollBone> GatherBones() => new Enumerator(this);
 
 		internal void ApplyPreset()
