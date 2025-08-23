@@ -6,16 +6,18 @@ using UnityEngine;
 namespace Depra.Creature.Runtime.Ragdoll.Joints
 {
 	[System.Serializable]
-	public struct JointLimitPreset
+	public class JointLimitPreset
 	{
-		[Min(0f)] [SerializeField] private float _limit;
+		[SerializeField] private float _limit;
 		[Min(0f)] [SerializeField] private float _bounciness;
 		[Min(0f)] [SerializeField] private float _contactDistance;
 
-		public static implicit operator SoftJointLimit(JointLimitPreset self) => self.Convert();
-
-		public static implicit operator JointLimitPreset(SoftJointLimit self) =>
-			new(self.limit, self.bounciness, self.contactDistance);
+		public static implicit operator SoftJointLimit(JointLimitPreset self) => new()
+		{
+			limit = self._limit,
+			bounciness = self._bounciness,
+			contactDistance = self._contactDistance
+		};
 
 		public JointLimitPreset(float limit, float bounciness, float contactDistance)
 		{
@@ -24,11 +26,11 @@ namespace Depra.Creature.Runtime.Ragdoll.Joints
 			_contactDistance = contactDistance;
 		}
 
-		public SoftJointLimit Convert() => new()
+		public void CopyFrom(SoftJointLimit other)
 		{
-			limit = _limit,
-			bounciness = _bounciness,
-			contactDistance = _contactDistance
-		};
+			_limit = other.limit;
+			_bounciness = other.bounciness;
+			_contactDistance = other.contactDistance;
+		}
 	}
 }

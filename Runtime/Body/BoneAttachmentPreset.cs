@@ -9,10 +9,10 @@ namespace Depra.Ragdoll
 	[System.Serializable]
 	public class BoneAttachmentPreset
 	{
-		[field: SerializeField] public JointLimitPreset LowTwist { get; internal set; } = new(-20f, 0f, 0f);
-		[field: SerializeField] public JointLimitPreset HighTwist { get; internal set; } = new(70f, 0f, 0f);
-		[field: SerializeField] public JointLimitPreset Swing1 { get; internal set; } = new(30f, 0f, 0f);
-		[field: SerializeField] public JointLimitPreset Swing2 { get; internal set; } = new(0f, 0f, 0f);
+		[SerializeField] private JointLimitPreset _lowTwist = new(-20f, 0f, 0f);
+		[SerializeField] private JointLimitPreset _highTwist = new(70f, 0f, 0f);
+		[SerializeField] private JointLimitPreset _swing1 = new(30f, 0f, 0f);
+		[SerializeField] private JointLimitPreset _swing2 = new(0f, 0f, 0f);
 
 		public void Apply(Joint joint)
 		{
@@ -24,10 +24,10 @@ namespace Depra.Ragdoll
 
 		public void Apply(CharacterJoint to)
 		{
-			to.lowTwistLimit = LowTwist;
-			to.highTwistLimit = HighTwist;
-			to.swing1Limit = Swing1;
-			to.swing2Limit = Swing2;
+			to.lowTwistLimit = _lowTwist;
+			to.highTwistLimit = _highTwist;
+			to.swing1Limit = _swing1;
+			to.swing2Limit = _swing2;
 		}
 
 		public void Capture(Joint joint)
@@ -40,10 +40,10 @@ namespace Depra.Ragdoll
 
 		public void Capture(CharacterJoint from)
 		{
-			LowTwist = from.lowTwistLimit;
-			HighTwist = from.highTwistLimit;
-			Swing1 = from.swing1Limit;
-			Swing2 = from.swing2Limit;
+			_lowTwist.CopyFrom(from.lowTwistLimit);
+			_highTwist.CopyFrom(from.highTwistLimit);
+			_swing1.CopyFrom(from.swing1Limit);
+			_swing2.CopyFrom(from.swing2Limit);
 		}
 	}
 }

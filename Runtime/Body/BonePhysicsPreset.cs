@@ -8,27 +8,27 @@ namespace Depra.Ragdoll
 	[System.Serializable]
 	public class BonePhysicsPreset
 	{
-		[field: Min(0f), SerializeField] public float Mass { get; internal set; } = 3.125f;
-		[field: Min(0f), SerializeField] public float Drag { get; internal set; }
-		[field: Min(0f), SerializeField] public float AngularDrag { get; internal set; } = 0.05f;
+		[Min(0f)] [SerializeField] private float _mass = 3.125f;
+		[Min(0f)] [SerializeField] private float _drag;
+		[Min(0f)] [SerializeField] public float _angularDrag = 0.05f;
 
-		[field: SerializeField] public bool UseGravity { get; internal set; } = true;
-		[field: SerializeField] public PhysicMaterial Material { get; internal set; }
+		[SerializeField] private bool _useGravity = true;
+		[SerializeField] private PhysicMaterial _material;
 
 		public void Apply(Rigidbody to)
 		{
-			to.mass = Mass;
-			to.drag = Drag;
-			to.angularDrag = AngularDrag;
-			to.useGravity = UseGravity;
+			to.mass = _mass;
+			to.drag = _drag;
+			to.angularDrag = _angularDrag;
+			to.useGravity = _useGravity;
 		}
 
 		public void Capture(Rigidbody from)
 		{
-			Mass = from.mass;
-			Drag = from.drag;
-			AngularDrag = from.angularDrag;
-			UseGravity = from.useGravity;
+			_mass = from.mass;
+			_drag = from.drag;
+			_angularDrag = from.angularDrag;
+			_useGravity = from.useGravity;
 		}
 	}
 }

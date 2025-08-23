@@ -24,6 +24,11 @@ namespace Depra.Ragdoll.Editor
 
 		private void OnEnable()
 		{
+			if (target == null)
+			{
+				return;
+			}
+
 			_armature = (HumanoidArmature)target;
 
 			_head = serializedObject.FindProperty("_head");
@@ -50,13 +55,6 @@ namespace Depra.Ragdoll.Editor
 			DrawSpineSection();
 			DrawLegsSection();
 			DrawArmsSection();
-
-			if (GUILayout.Button("Gather Bones"))
-			{
-				Undo.RecordObject(_armature, "Gather Bones");
-				_armature.GatherBones();
-				EditorUtility.SetDirty(_armature);
-			}
 
 			EditorGUILayout.Space(8);
 			DrawPresetSection();
@@ -124,9 +122,9 @@ namespace Depra.Ragdoll.Editor
 
 				if (GUILayout.Button("Save Preset"))
 				{
-					Undo.RecordObject(_armature, "Save Preset");
+					Undo.RecordObject(_preset.objectReferenceValue, "Save Preset");
 					_armature.SavePreset();
-					EditorUtility.SetDirty(_armature);
+					EditorUtility.SetDirty(_preset.objectReferenceValue);
 				}
 			}
 		}
