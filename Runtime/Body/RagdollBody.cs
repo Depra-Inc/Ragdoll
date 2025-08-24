@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,7 +12,7 @@ using UnityEditor;
 
 namespace Depra.Ragdoll.Body
 {
-	[AddComponentMenu(MENU_PATH + nameof(RagdollBody), DEFAULT_ORDER)]
+	[AddComponentMenu(MENU_PATH + "Ragdoll Body", DEFAULT_ORDER)]
 	public sealed class RagdollBody : MonoBehaviour
 	{
 		[SerializeField] private List<RagdollPart> _parts;
@@ -29,7 +29,6 @@ namespace Depra.Ragdoll.Body
 
 			EnableParts();
 			IsEnabled = true;
-
 #if UNITY_EDITOR
 			EditorUtility.SetDirty(this);
 #endif
@@ -45,7 +44,6 @@ namespace Depra.Ragdoll.Body
 
 			DisableParts();
 			IsEnabled = false;
-
 #if UNITY_EDITOR
 			EditorUtility.SetDirty(this);
 #endif

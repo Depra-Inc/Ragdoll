@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using JetBrains.Annotations;
 using UnityEngine;
@@ -8,7 +8,7 @@ using static Depra.Ragdoll.Module;
 namespace Depra.Ragdoll.Parts
 {
 	[DisallowMultipleComponent]
-	[AddComponentMenu(menuName: MENU_PATH + nameof(RagdollBone), DEFAULT_ORDER)]
+	[AddComponentMenu(menuName: MENU_PATH + "Ragdoll Bone", DEFAULT_ORDER)]
 	public sealed class RagdollBone : RagdollPart
 	{
 		[SerializeField] private Joint _joint;

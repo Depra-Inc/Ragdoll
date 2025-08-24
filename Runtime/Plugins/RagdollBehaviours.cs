@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// © 2024-2025 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using Depra.Ragdoll.Plugins;
 using UnityEngine;
@@ -7,7 +7,7 @@ using static Depra.Ragdoll.Module;
 
 namespace DefaultNamespace
 {
-	[AddComponentMenu(MENU_PATH + nameof(RagdollBehaviours), DEFAULT_ORDER)]
+	[AddComponentMenu(MENU_PATH + "Ragdoll Behaviours", DEFAULT_ORDER)]
 	internal sealed class RagdollBehaviours : ExternalRagdollPlugin
 	{
 		[SerializeField] private Behaviour[] _behaviours;

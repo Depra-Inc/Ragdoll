@@ -1,24 +1,28 @@
-﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// SPDX-License-Identifier: Apache-2.0
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using UnityEngine;
 
-namespace Depra.Ragdoll.Bones
+namespace Depra.Ragdoll.Armature
 {
-	public enum BoneType
+	public enum HumanoidBoneType
 	{
+		[InspectorName("Head")] HEAD,
+		[InspectorName("Torso")] TORSO,
 		[InspectorName("Pelvis")] PELVIS,
-		[InspectorName("Left Hips")] LEFT_HIPS,
+
+		[InspectorName("Left Hips")] LEFT_HIP,
 		[InspectorName("Left Knee")] LEFT_KNEE,
 		[InspectorName("Left Foot")] LEFT_FOOT,
-		[InspectorName("Right Hips")] RIGHT_HIPS,
+
+		[InspectorName("Right Hips")] RIGHT_HIP,
 		[InspectorName("Right Knee")] RIGHT_KNEE,
 		[InspectorName("Right Foot")] RIGHT_FOOT,
+
 		[InspectorName("Left Arm")] LEFT_ARM,
 		[InspectorName("Left Elbow")] LEFT_ELBOW,
+
 		[InspectorName("Right Arm")] RIGHT_ARM,
 		[InspectorName("Right Elbow")] RIGHT_ELBOW,
-		[InspectorName("Middle Hips")] MIDDLE_SPINE,
-		[InspectorName("Head")] HEAD,
 	}
 }

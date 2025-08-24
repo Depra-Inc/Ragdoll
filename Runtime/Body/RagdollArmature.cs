@@ -1,8 +1,7 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
-// © 2024 Nikolay Melnikov <n.melnikov@depra.org>
+// © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System.Collections.Generic;
-using Depra.Ragdoll.Bones;
 using Depra.Ragdoll.Parts;
 using UnityEngine;
 
@@ -14,8 +13,7 @@ namespace Depra.Ragdoll.Armature
 
 		public override void Enable()
 		{
-			var bones = GatherBones();
-			foreach (var bone in bones)
+			foreach (var bone in GatherBones())
 			{
 				bone.Enable();
 			}
@@ -23,8 +21,7 @@ namespace Depra.Ragdoll.Armature
 
 		public override void Disable()
 		{
-			var bones = GatherBones();
-			foreach (var bone in bones)
+			foreach (var bone in GatherBones())
 			{
 				bone.Disable();
 			}
