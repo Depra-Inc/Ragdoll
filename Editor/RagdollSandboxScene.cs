@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Depra.Ragdoll.Editor
 {
-	internal static class RagdollTestScene
+	internal static class RagdollSandboxScene
 	{
 		private static string _previousScene;
 		private static bool _needsSceneRestore;
@@ -35,7 +35,7 @@ namespace Depra.Ragdoll.Editor
 			EditorApplication.EnterPlaymode();
 		}
 
-		public static void Quit()
+		private static void Quit()
 		{
 			if (EditorApplication.isPlaying)
 			{
@@ -43,7 +43,7 @@ namespace Depra.Ragdoll.Editor
 			}
 			else
 			{
-				RestoreOriginalScene();
+				RestorePreviousScene();
 			}
 		}
 
@@ -51,7 +51,13 @@ namespace Depra.Ragdoll.Editor
 		{
 			if (_needsSceneRestore && state == PlayModeStateChange.EnteredEditMode)
 			{
-				EditorApplication.delayCall += RestoreOriginalScene;
+				EditorApplication.delayCall += RestorePreviousScene;
+			}
+			else if (_needsSceneRestore && state == PlayModeStateChange.ExitingPlayMode)
+			{
+				RagdollSandboxController.Teardown();
+				EditorSettings.enterPlayModeOptions = _enterPlayModeOptions;
+				EditorSettings.enterPlayModeOptionsEnabled = _enterPlayModeOptionsEnabled;
 			}
 		}
 
@@ -61,19 +67,20 @@ namespace Depra.Ragdoll.Editor
 			{
 				transform =
 				{
-					position = new Vector3(0, 1.5f, -5),
+					position = new Vector3(0, 1.5f, -3),
 					rotation = Quaternion.Euler(10, 0, 0)
-				}
+				},
+				tag = "MainCamera"
 			};
 
 			gameObject.AddComponent<Camera>();
-			gameObject.tag = "MainCamera";
 		}
 
 		private static void SpawnSceneEnvironment()
 		{
 			var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
 			ground.transform.position = Vector3.zero;
+			ground.transform.localScale = new Vector3(3, 1, 2f);
 			ground.name = "Ground";
 		}
 
@@ -86,29 +93,25 @@ namespace Depra.Ragdoll.Editor
 
 			var light = gameObject.AddComponent<Light>();
 			light.type = LightType.Directional;
-			light.intensity = 1.5f;
+			light.intensity = 1f;
 		}
 
 		private static void SpawnSceneController(GameObject prefab)
 		{
-			new GameObject("Ragdoll Test Controller").AddComponent<RagdollTestController>();
-			RagdollTestController.Initialize(prefab, Quit);
+			new GameObject("Sandbox Controller").AddComponent<RagdollSandboxController>();
+			RagdollSandboxController.Initialize(prefab, Quit);
 		}
 
-		private static void RestoreOriginalScene()
+		private static void RestorePreviousScene()
 		{
 			if (!_needsSceneRestore)
 			{
 				return;
 			}
 
-			EditorSettings.enterPlayModeOptions = _enterPlayModeOptions;
-			EditorSettings.enterPlayModeOptionsEnabled = _enterPlayModeOptionsEnabled;
-
-			EditorApplication.delayCall -= RestoreOriginalScene;
+			EditorApplication.delayCall -= RestorePreviousScene;
 			EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
 
-			RagdollTestController.Teardown();
 			if (!string.IsNullOrEmpty(_previousScene))
 			{
 				EditorSceneManager.OpenScene(_previousScene, OpenSceneMode.Single);

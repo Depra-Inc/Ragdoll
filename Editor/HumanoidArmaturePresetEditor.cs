@@ -15,9 +15,9 @@ namespace Depra.Ragdoll.Editor
 				return;
 			}
 
-			if (GUILayout.Button("▶ Test"))
+			if (GUILayout.Button("▶ Play Sandbox"))
 			{
-				RagdollTestWindow.ShowWindow((HumanoidArmaturePreset)target);
+				RagdollSandboxWindow.ShowWindow((HumanoidArmaturePreset)target);
 			}
 		}
 	}

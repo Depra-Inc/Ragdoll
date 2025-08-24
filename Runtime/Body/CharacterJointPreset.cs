@@ -7,20 +7,12 @@ using UnityEngine;
 namespace Depra.Ragdoll
 {
 	[System.Serializable]
-	public class BoneAttachmentPreset
+	public sealed class CharacterJointPreset
 	{
 		[SerializeField] private JointLimitPreset _lowTwist = new(-20f, 0f, 0f);
 		[SerializeField] private JointLimitPreset _highTwist = new(70f, 0f, 0f);
 		[SerializeField] private JointLimitPreset _swing1 = new(30f, 0f, 0f);
 		[SerializeField] private JointLimitPreset _swing2 = new(0f, 0f, 0f);
-
-		public void Apply(Joint joint)
-		{
-			if (joint is CharacterJoint characterJoint)
-			{
-				Apply(characterJoint);
-			}
-		}
 
 		public void Apply(CharacterJoint to)
 		{
@@ -28,14 +20,6 @@ namespace Depra.Ragdoll
 			to.highTwistLimit = _highTwist;
 			to.swing1Limit = _swing1;
 			to.swing2Limit = _swing2;
-		}
-
-		public void Capture(Joint joint)
-		{
-			if (joint is CharacterJoint characterJoint)
-			{
-				Capture(characterJoint);
-			}
 		}
 
 		public void Capture(CharacterJoint from)

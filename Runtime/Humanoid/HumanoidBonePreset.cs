@@ -11,13 +11,13 @@ namespace Depra.Ragdoll.Armature
 	{
 		[SerializeField] private HumanoidBoneType _type;
 		[SerializeField] private BonePhysicsPreset _physics;
-		[SerializeField] private BoneAttachmentPreset _attachment;
+		[SerializeField] private CharacterJointPreset _attachment;
 
 		public HumanoidBonePreset(HumanoidBoneType type)
 		{
 			_type = type;
 			_physics = new BonePhysicsPreset();
-			_attachment = new BoneAttachmentPreset();
+			_attachment = new CharacterJointPreset();
 		}
 
 		public HumanoidBoneType Type => _type;
@@ -39,9 +39,9 @@ namespace Depra.Ragdoll.Armature
 				_physics.Apply(bone.Collider);
 			}
 
-			if (bone.Joint)
+			if (bone.Joint && bone.Joint is CharacterJoint characterJoint)
 			{
-				_attachment.Apply(bone.Joint);
+				_attachment.Apply(characterJoint);
 			}
 		}
 
@@ -62,9 +62,9 @@ namespace Depra.Ragdoll.Armature
 				_physics.Capture(bone.Collider);
 			}
 
-			if (bone.Joint)
+			if (bone.Joint && bone.Joint is CharacterJoint characterJoint)
 			{
-				_attachment.Capture(bone.Joint);
+				_attachment.Capture(characterJoint);
 			}
 		}
 	}

@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Depra.Ragdoll.Editor
 {
-	internal sealed class RagdollTestWindow : EditorWindow
+	internal sealed class RagdollSandboxWindow : EditorWindow
 	{
 		private Vector2 _scrollPosition;
 		private GameObject[] _availablePrefabs;
 
 		public static void ShowWindow(HumanoidArmaturePreset preset)
 		{
-			var window = GetWindow<RagdollTestWindow>(true, "Ragdoll Test", true);
+			var window = GetWindow<RagdollSandboxWindow>(true, "Ragdoll Sandbox", true);
 			window.minSize = new Vector2(200, 100);
 			window.maxSize = new Vector2(200, 300);
 			window._availablePrefabs = GetPrefabsUsingPreset(preset);
@@ -39,7 +39,7 @@ namespace Depra.Ragdoll.Editor
 			{
 				if (GUILayout.Button(prefab.name))
 				{
-					RagdollTestScene.Open(prefab);
+					RagdollSandboxScene.Open(prefab);
 					Close();
 				}
 			}

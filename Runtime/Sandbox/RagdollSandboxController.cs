@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
-	internal sealed class RagdollTestController : MonoBehaviour
+	internal sealed class RagdollSandboxController : MonoBehaviour
 	{
-		private const float CHARGE_SPEED = 100f;
+		private const float CHARGE_SPEED = 200f;
 
 		private static Action _onQuit;
 		private static GameObject _prefab;
