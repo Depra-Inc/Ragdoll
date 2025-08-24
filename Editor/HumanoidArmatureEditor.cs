@@ -3,6 +3,7 @@
 
 using Depra.Ragdoll.Armature;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Depra.Ragdoll.Editor
@@ -58,6 +59,7 @@ namespace Depra.Ragdoll.Editor
 
 			EditorGUILayout.Space(8);
 			DrawPresetSection();
+			DrawSandboxSection();
 
 			serializedObject.ApplyModifiedProperties();
 		}
@@ -126,6 +128,25 @@ namespace Depra.Ragdoll.Editor
 					_armature.SavePreset();
 					EditorUtility.SetDirty(_preset.objectReferenceValue);
 				}
+			}
+		}
+
+		private void DrawSandboxSection()
+		{
+			if (!GUILayout.Button("▶ Play Sandbox"))
+			{
+				return;
+			}
+
+			var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+			if (prefabStage)
+			{
+				var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabStage.assetPath);
+				RagdollSandboxScene.Open(prefab);
+			}
+			else
+			{
+				Debug.LogError("Ragdoll Sandbox can only be opened for prefab assets.");
 			}
 		}
 	}
