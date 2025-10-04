@@ -2,10 +2,9 @@
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System.Collections.Generic;
-using Depra.Ragdoll.Parts;
 using UnityEngine;
 
-namespace Depra.Ragdoll.Armature
+namespace Depra.Ragdoll
 {
 	public abstract class RagdollArmature : RagdollPart
 	{

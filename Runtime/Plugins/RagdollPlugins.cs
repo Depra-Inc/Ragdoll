@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Parts
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + "Ragdoll Plugins", DEFAULT_ORDER)]

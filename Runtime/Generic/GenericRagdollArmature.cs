@@ -2,11 +2,10 @@
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System.Collections.Generic;
-using Depra.Ragdoll.Parts;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Armature
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + "Generic Ragdoll Armature", DEFAULT_ORDER)]

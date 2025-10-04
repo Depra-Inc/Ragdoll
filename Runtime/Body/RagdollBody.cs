@@ -3,14 +3,13 @@
 
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Depra.Ragdoll.Parts;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace Depra.Ragdoll.Body
+namespace Depra.Ragdoll
 {
 	[AddComponentMenu(MENU_PATH + "Ragdoll Body", DEFAULT_ORDER)]
 	public sealed class RagdollBody : MonoBehaviour

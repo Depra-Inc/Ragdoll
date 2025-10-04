@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Depra.Creature.Runtime.Ragdoll.Joints
+namespace Depra.Ragdoll
 {
 	[System.Serializable]
 	public class JointLimitPreset

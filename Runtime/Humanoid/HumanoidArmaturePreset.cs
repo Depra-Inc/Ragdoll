@@ -4,7 +4,7 @@
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Armature
+namespace Depra.Ragdoll
 {
 	[CreateAssetMenu(menuName = MENU_PATH + FILE_NAME, order = DEFAULT_ORDER)]
 	public sealed class HumanoidArmaturePreset : ScriptableObject

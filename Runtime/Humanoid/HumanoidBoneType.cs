@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Depra.Ragdoll.Armature
+namespace Depra.Ragdoll
 {
 	public enum HumanoidBoneType
 	{

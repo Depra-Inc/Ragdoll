@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Depra.Ragdoll.Parts
+namespace Depra.Ragdoll
 {
 	public abstract class RagdollPart : MonoBehaviour
 	{

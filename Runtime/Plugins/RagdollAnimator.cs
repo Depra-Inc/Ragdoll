@@ -4,7 +4,7 @@
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Parts
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + "Ragdoll Animator", DEFAULT_ORDER)]

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Parts
+namespace Depra.Ragdoll
 {
 	[AddComponentMenu(MENU_PATH + "Ragdoll Event Forwarding", DEFAULT_ORDER)]
 	internal sealed class RagdollEventForwarding : MonoBehaviour

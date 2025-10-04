@@ -4,11 +4,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Depra.Ragdoll.Parts;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Armature
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + "Humanoid Armature", DEFAULT_ORDER)]

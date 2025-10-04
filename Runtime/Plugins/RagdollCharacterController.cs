@@ -4,7 +4,7 @@
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Plugins
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(MENU_PATH + "Ragdoll Character Controller", DEFAULT_ORDER)]

@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
-namespace Depra.Ragdoll.Parts
+namespace Depra.Ragdoll
 {
 	[DisallowMultipleComponent]
 	[AddComponentMenu(menuName: MENU_PATH + "Ragdoll Bone", DEFAULT_ORDER)]
@@ -49,7 +49,6 @@ namespace Depra.Ragdoll.Parts
 
 			_rigidbody.useGravity = false;
 			_rigidbody.isKinematic = true;
-			_rigidbody.detectCollisions = false;
 		}
 	}
 }

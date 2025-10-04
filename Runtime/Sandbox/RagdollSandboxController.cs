@@ -1,5 +1,7 @@
+// SPDX-License-Identifier: Apache-2.0
+// © 2024-2025 Depra <n.melnikov@depra.org>
+
 using System;
-using Depra.Ragdoll.Body;
 using UnityEngine;
 
 namespace Depra.Ragdoll

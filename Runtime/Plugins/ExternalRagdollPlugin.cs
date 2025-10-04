@@ -1,10 +1,9 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
-using Depra.Ragdoll.Parts;
 using UnityEngine;
 
-namespace Depra.Ragdoll.Plugins
+namespace Depra.Ragdoll
 {
 	public abstract class ExternalRagdollPlugin : MonoBehaviour
 	{
