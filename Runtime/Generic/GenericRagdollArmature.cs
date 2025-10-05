@@ -14,7 +14,7 @@ namespace Depra.Ragdoll
 		[SerializeField] private RagdollBone[] _bones;
 
 		[ContextMenu(nameof(GatherBones))]
-		public override IEnumerable<RagdollBone> GatherBones() =>
+		public override IReadOnlyList<RagdollBone> GatherBones() =>
 			_bones ??= GetComponentsInChildren<RagdollBone>();
 	}
 }

@@ -8,7 +8,7 @@ namespace Depra.Ragdoll
 {
 	public abstract class RagdollArmature : RagdollPart
 	{
-		public abstract IEnumerable<RagdollBone> GatherBones();
+		public abstract IReadOnlyList<RagdollBone> GatherBones();
 
 		public override void Enable()
 		{

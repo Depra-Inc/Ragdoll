@@ -23,7 +23,7 @@ namespace Depra.Ragdoll
 
 		internal HumanoidArmaturePreset Preset => _preset;
 
-		public override IEnumerable<RagdollBone> GatherBones() => new Enumerator(this);
+		public override IReadOnlyList<RagdollBone> GatherBones() => new Enumerator(this);
 
 		internal void ApplyPreset()
 		{
@@ -65,7 +65,7 @@ namespace Depra.Ragdoll
 			_preset.GetBone(HumanoidBoneType.RIGHT_ELBOW).Capture(_rightElbow);
 		}
 
-		private struct Enumerator : IEnumerable<RagdollBone>, IEnumerator<RagdollBone>
+		private struct Enumerator : IReadOnlyList<RagdollBone>, IEnumerator<RagdollBone>
 		{
 			private readonly HumanoidArmature _armature;
 			private int _index;
@@ -76,7 +76,9 @@ namespace Depra.Ragdoll
 				_index = -1;
 			}
 
-			public RagdollBone Current => _index switch
+			int IReadOnlyCollection<RagdollBone>.Count => 11;
+
+			public RagdollBone this[int index] => index switch
 			{
 				0 => _armature._head,
 				1 => _armature._torso,
@@ -89,8 +91,10 @@ namespace Depra.Ragdoll
 				8 => _armature._leftElbow,
 				9 => _armature._rightShoulder,
 				10 => _armature._rightElbow,
-				_ => null
+				_ => throw new IndexOutOfRangeException()
 			};
+
+			public RagdollBone Current => this[_index];
 
 			object IEnumerator.Current => Current;
 
