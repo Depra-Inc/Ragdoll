@@ -1,7 +1,7 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
@@ -13,8 +13,10 @@ namespace Depra.Ragdoll
 	{
 		[SerializeField] private RagdollBone[] _bones;
 
-		[ContextMenu(nameof(GatherBones))]
-		public override IReadOnlyList<RagdollBone> GatherBones() =>
+		public override ReadOnlySpan<RagdollBone> GatherBones() =>
 			_bones ??= GetComponentsInChildren<RagdollBone>();
+
+		[ContextMenu(nameof(GatherBones))]
+		private void GatherBonesFromChildren() => _bones = GetComponentsInChildren<RagdollBone>();
 	}
 }

@@ -2,8 +2,6 @@
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static Depra.Ragdoll.Module;
 
@@ -21,9 +19,18 @@ namespace Depra.Ragdoll
 
 		[SerializeField] private HumanoidArmaturePreset _preset;
 
+		[SerializeField] private RagdollBone[] _bones;
+
 		internal HumanoidArmaturePreset Preset => _preset;
 
-		public override IReadOnlyList<RagdollBone> GatherBones() => new Enumerator(this);
+		public override ReadOnlySpan<RagdollBone> GatherBones() => _bones;
+
+		private void OnValidate() => _bones = new[]
+		{
+			_head, _torso, _pelvis,
+			_leftHip, _leftKnee, _rightHip, _rightKnee,
+			_leftShoulder, _leftElbow, _rightShoulder, _rightElbow
+		};
 
 		internal void ApplyPreset()
 		{
@@ -65,45 +72,5 @@ namespace Depra.Ragdoll
 			_preset.GetBone(HumanoidBoneType.RIGHT_ELBOW).Capture(_rightElbow);
 		}
 
-		private struct Enumerator : IReadOnlyList<RagdollBone>, IEnumerator<RagdollBone>
-		{
-			private readonly HumanoidArmature _armature;
-			private int _index;
-
-			public Enumerator(HumanoidArmature armature)
-			{
-				_armature = armature;
-				_index = -1;
-			}
-
-			int IReadOnlyCollection<RagdollBone>.Count => 11;
-
-			public RagdollBone this[int index] => index switch
-			{
-				0 => _armature._head,
-				1 => _armature._torso,
-				2 => _armature._pelvis,
-				3 => _armature._leftHip,
-				4 => _armature._leftKnee,
-				5 => _armature._rightHip,
-				6 => _armature._rightKnee,
-				7 => _armature._leftShoulder,
-				8 => _armature._leftElbow,
-				9 => _armature._rightShoulder,
-				10 => _armature._rightElbow,
-				_ => throw new IndexOutOfRangeException()
-			};
-
-			public RagdollBone Current => this[_index];
-
-			object IEnumerator.Current => Current;
-
-			bool IEnumerator.MoveNext() => ++_index < 11;
-			void IEnumerator.Reset() => _index = -1;
-			void IDisposable.Dispose() { }
-
-			IEnumerator<RagdollBone> IEnumerable<RagdollBone>.GetEnumerator() => this;
-			IEnumerator IEnumerable.GetEnumerator() => this;
-		}
 	}
 }

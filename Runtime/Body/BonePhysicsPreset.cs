@@ -14,13 +14,13 @@ namespace Depra.Ragdoll
 		[SerializeField] private CollisionDetectionMode _collisionDetection = CollisionDetectionMode.ContinuousDynamic;
 
 		[SerializeField] private bool _useGravity = true;
-		[SerializeField] private PhysicMaterial _material;
+		[SerializeField] private PhysicsMaterial _material;
 
 		public void Apply(Rigidbody to)
 		{
 			to.mass = _mass;
-			to.drag = _drag;
-			to.angularDrag = _angularDrag;
+			to.linearDamping = _drag;
+			to.angularDamping = _angularDrag;
 			to.useGravity = _useGravity;
 			to.collisionDetectionMode = _collisionDetection;
 		}
@@ -30,8 +30,8 @@ namespace Depra.Ragdoll
 		public void Capture(Rigidbody from)
 		{
 			_mass = from.mass;
-			_drag = from.drag;
-			_angularDrag = from.angularDrag;
+			_drag = from.linearDamping;
+			_angularDrag = from.angularDamping;
 			_useGravity = from.useGravity;
 			_collisionDetection = from.collisionDetectionMode;
 		}
