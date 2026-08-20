@@ -19,13 +19,13 @@ namespace Depra.Ragdoll
 
 		[SerializeField] private HumanoidArmaturePreset _preset;
 
-		[SerializeField] private RagdollBone[] _bones;
+		private RagdollBone[] _bones;
 
 		internal HumanoidArmaturePreset Preset => _preset;
 
 		public override ReadOnlySpan<RagdollBone> GatherBones() => _bones;
 
-		private void OnValidate() => _bones = new[]
+		private void Awake() => _bones = new[]
 		{
 			_head, _torso, _pelvis,
 			_leftHip, _leftKnee, _rightHip, _rightKnee,
