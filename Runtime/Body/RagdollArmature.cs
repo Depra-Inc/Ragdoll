@@ -1,14 +1,14 @@
 ﻿// SPDX-License-Identifier: Apache-2.0
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Depra.Ragdoll
 {
 	public abstract class RagdollArmature : RagdollPart
 	{
-		public abstract IReadOnlyList<RagdollBone> GatherBones();
+		public abstract ReadOnlySpan<RagdollBone> GatherBones();
 
 		public override void Enable()
 		{

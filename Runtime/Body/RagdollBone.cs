@@ -37,7 +37,7 @@ namespace Depra.Ragdoll
 			_rigidbody.useGravity = true;
 			_rigidbody.isKinematic = false;
 			_rigidbody.detectCollisions = true;
-			_rigidbody.velocity = Vector3.zero;
+			_rigidbody.linearVelocity = Vector3.zero;
 		}
 
 		public override void Disable()
