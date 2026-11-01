@@ -13,7 +13,8 @@ namespace Depra.Ragdoll
 		[Min(0f)] [SerializeField] public float _angularDrag = 0.05f;
 		[SerializeField] private CollisionDetectionMode _collisionDetection = CollisionDetectionMode.ContinuousDynamic;
 
-		[SerializeField] private bool _useGravity = true;
+		[SerializeField] private bool _isKinematic = true;
+		[SerializeField] private bool _useGravity;
 		[SerializeField] private PhysicsMaterial _material;
 
 		public void Apply(Rigidbody to)
@@ -23,6 +24,7 @@ namespace Depra.Ragdoll
 			to.angularDamping = _angularDrag;
 			to.useGravity = _useGravity;
 			to.collisionDetectionMode = _collisionDetection;
+			to.isKinematic = _isKinematic;
 		}
 
 		public void Apply(Collider to) => to.material = _material;
@@ -34,6 +36,7 @@ namespace Depra.Ragdoll
 			_angularDrag = from.angularDamping;
 			_useGravity = from.useGravity;
 			_collisionDetection = from.collisionDetectionMode;
+			_isKinematic = from.isKinematic;
 		}
 
 		public void Capture(Collider from) => _material = from.material;
