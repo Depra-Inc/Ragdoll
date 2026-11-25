@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: Apache-2.0
+﻿﻿// SPDX-License-Identifier: Apache-2.0
 // © 2024-2025 Depra <n.melnikov@depra.org>
 
 using UnityEngine;
@@ -9,16 +9,35 @@ namespace Depra.Ragdoll
 	{
 		[SerializeField] private RagdollPlugins _ragdoll;
 
-		private void OnEnable()
+		private void Awake()
 		{
-			_ragdoll.Enabled += OnEnabled;
-			_ragdoll.Disabled += OnDisabled;
+			_ragdoll.Enabled += OnRagdollEnabled;
+			_ragdoll.Disabled += OnRagdollDisabled;
 		}
 
-		private void OnDisable()
+		private void OnDestroy()
 		{
-			_ragdoll.Enabled -= OnEnabled;
-			_ragdoll.Disabled -= OnDisabled;
+			if (_ragdoll)
+			{
+				_ragdoll.Enabled -= OnRagdollEnabled;
+				_ragdoll.Disabled -= OnRagdollDisabled;
+			}
+		}
+
+		private void OnRagdollEnabled()
+		{
+			if (isActiveAndEnabled)
+			{
+				OnEnabled();
+			}
+		}
+
+		private void OnRagdollDisabled()
+		{
+			if (isActiveAndEnabled)
+			{
+				OnDisabled();
+			}
 		}
 
 		protected abstract void OnEnabled();
